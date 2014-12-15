@@ -1,11 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: [:show, :destroy]
 
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
-    @comment = Comment.new
+    @comments = Comment.order(created_at: :desc).limit(10)
+  end
+
+  def show
+    respond_to :json
   end
 
   # POST /comments
@@ -35,13 +38,13 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def comment_params
-      params.fetch(:comment, {}).permit(:name, :content)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def comment_params
+    params.fetch(:comment, {}).permit(:name, :content)
+  end
 end

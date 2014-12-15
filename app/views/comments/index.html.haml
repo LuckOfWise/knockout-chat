@@ -1,8 +1,11 @@
 = render 'form'
 
-%ul.comments
-  - @comments.each do |comment|
-    %li.comment
-      = comment.name
-      = link_to '☓', comment, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
-      = simple_format comment.content
+%ul.comments{data: {bind: 'foreach: comments'}}
+  %li.comment
+    %small.comment__name{data: {bind: 'text: name'}}
+    %small.comment__created-at{data: {bind: 'text: created_at'}}
+    .comment__content{data: {bind: 'text: content'}}
+
+:coffee
+  $ ->
+    KC_COMMENT.applyBindings("#{Pusher.key}", #{@comments.map{|c| {id: c.id, name: c.name, content: c.content, created_at: l(c.created_at)}}.to_json})
