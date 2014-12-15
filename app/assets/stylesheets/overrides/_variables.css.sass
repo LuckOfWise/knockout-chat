@@ -1,0 +1,48 @@
+$font-size-base: 14px
+$font-size-h1: floor(($font-size-base * 2.0))
+$font-size-h2: floor(($font-size-base *  1.5))
+$font-size-h3: ceil(($font-size-base * 1.25))
+$font-size-h4: ceil(($font-size-base * 1.1))
+
+$breakpoint: 1px
+
+// overwrite bootstrap breakpoint
+$screen-xs: 0px
+$screen-sm: $breakpoint
+$screen-md: 9998px
+$screen-md-min: $breakpoint + 1
+$screen-lg: 9999px
+
+$container-size: 970px
+$container-tablet: $container-size
+$container-sm: $container-size
+
+// Medium screen / desktop
+$container-desktop: $container-size
+$container-md: $container-size
+
+// http://blog.mah-lab.com/2014/02/04/twitter-bootstrap/
+$main-color: $_black
+$base-text-color: $_brown-dark
+$base-color: $_white
+$accent-color: $_green
+
+$text-color: $base-text-color
+$body-bg: $base-color
+$link-color: $accent-color
+
+$navbar-default-bg: $base-color
+$navbar-default-color: $base-text-color
+$navbar-defalut-link-color: $base-text-color
+$navbar-default-link-hover-color: $base-text-color - 60
+$navbar-default-link-active-color: darken($base-text-color, 5%)
+
+$navbar-default-link-hover-bg: transparent
+$navbar-default-link-active-bg: transparent
+$navbar-default-brand-color: $base-text-color
+
+$hr-border: darken($base-color, 10%)
+
+// navbar
+$navbar-margin-bottom: 0
+$navbar-border-radius: 0

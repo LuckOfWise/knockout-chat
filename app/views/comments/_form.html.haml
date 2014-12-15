@@ -1,0 +1,6 @@
+= simple_form_for(@comment, html: {class: 'form-inline comment-form'}, remote: true) do |f|
+  = f.error_notification
+
+  = f.input :name, label: false, placeholder: 'name'
+  = f.input :content, as: :string, label: false, input_html: {class: 'comment-form__content'}
+  = f.button :submit, 'POST'

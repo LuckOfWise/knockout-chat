@@ -1,0 +1,8 @@
+= render 'form'
+
+%ul.comments
+  - @comments.each do |comment|
+    %li.comment
+      = comment.name
+      = link_to '☓', comment, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+      = simple_format comment.content
