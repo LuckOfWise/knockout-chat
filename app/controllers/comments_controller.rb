@@ -11,30 +11,18 @@ class CommentsController < ApplicationController
     respond_to :json
   end
 
-  # POST /comments
-  # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
-    respond_to do |format|
-      if @comment.save
-        format.js { render }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.js { head :no_content }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      render
+    else
+      head :no_content
     end
   end
 
-  # DELETE /comments/1
-  # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.js { head :no_content }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private

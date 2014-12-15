@@ -4,6 +4,7 @@
   %li.comment
     %small.comment__name{data: {bind: 'text: name'}}
     %small.comment__created-at{data: {bind: 'text: created_at'}}
+    %small= link_to '☓', '#', method: :delete, data: { confirm: 'Are you sure?', bind: 'attr: { href: url }' }, remote: true
     .comment__content{data: {bind: 'text: content'}}
 
 :coffee
